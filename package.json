@@ -19,7 +19,7 @@
     "test:advanced": "playwright test tests/advanced-todo.spec.ts",
     "test:fixtures": "playwright test tests/fixture-examples.spec.ts",
     "test:all": "playwright test tests/",
-    "test:docker": "docker-compose run --rm playwright-tests",
+    "test:docker": "docker-compose run playwright-tests",
     "test:docker-build": "docker-compose build playwright-tests",
     "test:docker-report": "docker-compose --profile report up -d test-reports",
     "report": "playwright show-report",
