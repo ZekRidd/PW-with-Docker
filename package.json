@@ -1,0 +1,40 @@
+{
+  "name": "playwright-mcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:parallel": "playwright test --workers=4",
+    "test:slow": "playwright test --headed --timeout=30000",
+    "test:report": "playwright test --reporter=html",
+    "test:simple": "playwright test tests/simple.spec.ts",
+    "test:todo": "playwright test tests/todo.spec.ts",
+    "test:advanced": "playwright test tests/advanced-todo.spec.ts",
+    "test:fixtures": "playwright test tests/fixture-examples.spec.ts",
+    "test:all": "playwright test tests/",
+    "test:docker": "docker-compose run --rm playwright-tests",
+    "test:docker-build": "docker-compose build playwright-tests",
+    "test:docker-report": "docker-compose --profile report up -d test-reports",
+    "report": "playwright show-report",
+    "install-browsers": "playwright install",
+    "codegen": "playwright codegen",
+    "trace": "playwright show-trace"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/mcp": "^0.0.29",
+    "@playwright/test": "^1.53.1",
+    "@types/node": "^24.0.7",
+    "ts-node": "^10.9.2"
+  }
+}

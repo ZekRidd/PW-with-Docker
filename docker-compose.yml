@@ -1,0 +1,57 @@
+services:
+  # Playwright test service
+  playwright-tests:
+    build: .
+    volumes:
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+      - ./screenshots:/app/screenshots
+    environment:
+      - CI=true
+      - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+    profiles:
+      - test
+
+  # Test reports service
+  test-reports:
+    image: nginx:alpine
+    ports:
+      - "9323:80"
+    volumes:
+      - ./playwright-report:/usr/share/nginx/html
+    profiles:
+      - report
+
+  # Development service (with UI)
+  playwright-dev:
+    build: .
+    ports:
+      - "9323:9323"
+    volumes:
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+      - ./screenshots:/app/screenshots
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CI=false
+    command: ["npm", "run", "test:ui"]
+    profiles:
+      - dev
+
+  # Debug service
+  playwright-debug:
+    build: .
+    ports:
+      - "9323:9323"
+    volumes:
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+      - ./screenshots:/app/screenshots
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CI=false
+    command: ["npm", "run", "test:debug"]
+    profiles:
+      - debug
