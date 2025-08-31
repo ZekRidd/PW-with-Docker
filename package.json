@@ -8,24 +8,86 @@
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
+    
     "test:chromium": "playwright test --project=chromium",
     "test:firefox": "playwright test --project=firefox",
     "test:webkit": "playwright test --project=webkit",
+    "test:all-browsers": "playwright test --project=chromium --project=firefox --project=webkit",
+    
     "test:parallel": "playwright test --workers=4",
+    "test:parallel-max": "playwright test --workers=100%",
     "test:slow": "playwright test --headed --timeout=30000",
+    "test:fast": "playwright test --timeout=10000 --workers=8",
+    
     "test:report": "playwright test --reporter=html",
+    "test:json": "playwright test --reporter=json --output-dir=test-results/json",
+    "test:junit": "playwright test --reporter=junit --output-dir=test-results/junit",
+    "test:allure": "playwright test --reporter=allure-playwright",
+    "report": "playwright show-report",
+    "report:open": "playwright show-report --host=0.0.0.0 --port=9323",
+    
     "test:simple": "playwright test tests/simple.spec.ts",
     "test:todo": "playwright test tests/todo.spec.ts",
     "test:advanced": "playwright test tests/advanced-todo.spec.ts",
     "test:fixtures": "playwright test tests/fixture-examples.spec.ts",
     "test:all": "playwright test tests/",
+    
     "test:docker": "docker-compose run playwright-tests",
+    "test:docker-clean": "docker-compose run --rm playwright-tests",
     "test:docker-build": "docker-compose build playwright-tests",
+    "test:docker-rebuild": "docker-compose build --no-cache playwright-tests",
+    
+    "dev:start": "docker-compose --profile dev up -d playwright-dev",
+    "dev:stop": "docker-compose --profile dev down",
+    "dev:restart": "npm run dev:stop && npm run dev:start",
+    "dev:test": "docker-compose --profile dev exec playwright-dev npm test",
+    "dev:test-ui": "echo 'UI mode requires local environment. Use: npm run test:ui'",
+    "dev:test-headed": "docker-compose --profile dev exec playwright-dev npm run test:headed",
+    "dev:logs": "docker-compose --profile dev logs -f playwright-dev",
+    "dev:shell": "docker-compose --profile dev exec playwright-dev bash",
+    
+    "docker:ps": "docker-compose ps",
+    "docker:clean": "docker-compose down -v --remove-orphans",
+    "docker:rebuild-all": "docker-compose down && docker-compose build --no-cache && docker-compose up -d",
+    
     "test:docker-report": "docker-compose --profile report up -d test-reports",
-    "report": "playwright show-report",
-    "install-browsers": "playwright install",
+    "report:docker": "docker-compose --profile report up -d test-reports && echo 'Reports available at http://localhost:8080'",
+    "report:stop": "docker-compose --profile report down",
+    
+    "test:staging": "ENVIRONMENT=staging playwright test",
+    "test:production": "ENVIRONMENT=production playwright test --project=chromium",
+    "test:local": "ENVIRONMENT=local playwright test",
+    
+    "test:ci": "playwright test --reporter=json --output-dir=test-results/ci",
+    "test:ci-headed": "playwright test --headed --reporter=json",
+    "test:smoke": "playwright test --grep='@smoke'",
+    "test:regression": "playwright test --grep='@regression'",
+    "test:critical": "playwright test --grep='@critical'",
+    
+    "test:verbose": "playwright test --reporter=list",
+    "test:trace": "playwright test --trace=on",
+    "test:screenshot": "playwright test --screenshot=on",
+    "test:video": "playwright test --video=on",
+    "trace": "playwright show-trace",
     "codegen": "playwright codegen",
-    "trace": "playwright show-trace"
+    
+    "install-browsers": "playwright install",
+    "install-deps": "playwright install-deps",
+    "update-browsers": "playwright install --force",
+    
+    "clean": "rimraf test-results playwright-report",
+    "clean:all": "npm run clean && rimraf node_modules && npm install",
+    "lint:tests": "eslint tests/**/*.ts",
+    "format:tests": "prettier --write tests/**/*.ts",
+    
+    "quick:chrome": "playwright test --project=chromium --headed",
+    "quick:debug": "playwright test --debug --project=chromium",
+    "quick:ui": "playwright test --ui --project=chromium",
+    
+    "info": "playwright --version && node --version && npm --version",
+    "health": "docker-compose ps && docker system df",
+    "backup:results": "tar -czf test-results-$(date +%Y%m%d).tar.gz test-results/",
+    "backup:reports": "tar -czf playwright-reports-$(date +%Y%m%d).tar.gz playwright-report/"
   },
   "keywords": [],
   "author": "",
