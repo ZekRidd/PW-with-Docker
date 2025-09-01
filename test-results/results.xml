@@ -1,58 +1,6 @@
-<testsuites id="" name="" tests="24" failures="0" skipped="0" errors="0" time="5.701923">
-<testsuite name="advanced-todo.spec.ts" timestamp="2025-08-31T20:47:20.687Z" hostname="chromium" tests="15" failures="0" skipped="0" time="7.512" errors="0">
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should add valid todo: &quot;Learn Playwright&quot;" classname="advanced-todo.spec.ts" time="0.705">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should add valid todo: &quot;Write automated tests&quot;" classname="advanced-todo.spec.ts" time="0.706">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should add valid todo: &quot;Debug test failures&quot;" classname="advanced-todo.spec.ts" time="0.725">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should add valid todo: &quot;Create test reports&quot;" classname="advanced-todo.spec.ts" time="0.706">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should add valid todo: &quot;Optimize test performance&quot;" classname="advanced-todo.spec.ts" time="0.705">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should handle special characters: &quot;Todo with &quot;quotes&quot;&quot;" classname="advanced-todo.spec.ts" time="0.272">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should handle special characters: &quot;Todo with &lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;&quot;" classname="advanced-todo.spec.ts" time="0.272">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should handle special characters: &quot;Todo with emoji 🎯&quot;" classname="advanced-todo.spec.ts" time="0.294">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should handle special characters: &quot;Todo with numbers 123&quot;" classname="advanced-todo.spec.ts" time="0.287">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Data-Driven Tests › should handle special characters: &quot;Todo with special chars !@#$%^&amp;*()&quot;" classname="advanced-todo.spec.ts" time="0.292">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Performance Tests › should handle large number of todos" classname="advanced-todo.spec.ts" time="0.761">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Edge Cases › should handle very long todo text" classname="advanced-todo.spec.ts" time="0.264">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Edge Cases › should handle rapid todo additions" classname="advanced-todo.spec.ts" time="0.827">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Screenshot Tests › should take screenshot of todo list" classname="advanced-todo.spec.ts" time="0.443">
-</testcase>
-<testcase name="Advanced TodoMVC Tests › Error Handling › should handle network errors gracefully" classname="advanced-todo.spec.ts" time="0.253">
-</testcase>
-</testsuite>
-<testsuite name="fixture-examples.spec.ts" timestamp="2025-08-31T20:47:20.687Z" hostname="chromium" tests="3" failures="0" skipped="0" time="0.642" errors="0">
-<testcase name="Simple Fixture Examples › should use page fixture" classname="fixture-examples.spec.ts" time="0.261">
-</testcase>
-<testcase name="Simple Fixture Examples › should use request fixture for API test" classname="fixture-examples.spec.ts" time="0.087">
-</testcase>
-<testcase name="Simple Fixture Examples › should use multiple fixtures" classname="fixture-examples.spec.ts" time="0.294">
-</testcase>
-</testsuite>
-<testsuite name="simple.spec.ts" timestamp="2025-08-31T20:47:20.687Z" hostname="chromium" tests="2" failures="0" skipped="0" time="0.476" errors="0">
-<testcase name="Simple Framework Test › should navigate to a website" classname="simple.spec.ts" time="0.23">
-</testcase>
-<testcase name="Simple Framework Test › should add a simple todo" classname="simple.spec.ts" time="0.246">
-</testcase>
-</testsuite>
-<testsuite name="todo.spec.ts" timestamp="2025-08-31T20:47:20.687Z" hostname="chromium" tests="4" failures="0" skipped="0" time="13.182" errors="0">
-<testcase name="TodoMVC Tests › should add a new todo" classname="todo.spec.ts" time="3.255">
-</testcase>
-<testcase name="TodoMVC Tests › should add multiple todos" classname="todo.spec.ts" time="3.257">
-</testcase>
-<testcase name="TodoMVC Tests › should complete a todo" classname="todo.spec.ts" time="3.29">
-</testcase>
-<testcase name="TodoMVC Tests › should clear completed todos" classname="todo.spec.ts" time="3.38">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="0.7658360000103712">
+<testsuite name="graphql-basics.spec.ts" timestamp="2025-09-01T17:02:21.563Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.262" errors="0">
+<testcase name="Pokemon GraphQL API Test › should fetch first 5 pokemons" classname="graphql-basics.spec.ts" time="0.262">
 </testcase>
 </testsuite>
 </testsuites>

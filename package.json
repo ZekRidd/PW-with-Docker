@@ -30,6 +30,7 @@
     "test:todo": "playwright test tests/todo.spec.ts",
     "test:advanced": "playwright test tests/advanced-todo.spec.ts",
     "test:fixtures": "playwright test tests/fixture-examples.spec.ts",
+    "test:graphql-basics": "playwright test tests/graphql-basics.spec.ts",
     "test:all": "playwright test tests/",
     
     "test:docker": "docker-compose run playwright-tests",
