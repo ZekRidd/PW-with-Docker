@@ -1,0 +1,106 @@
+version: "3"
+
+vars:
+  BROWSER: chromium
+  WORKERS: 4
+  TIMEOUT: 30000
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+
+  install:
+    desc: Install NPM dependencies
+    cmds:
+      - npm install
+    sources:
+      - package.json
+      - package-lock.json
+    generates:
+      - node_modules/**
+
+  playwright:install:
+    desc: Download Playwright browsers
+    deps: [install]
+    cmds:
+      - npx playwright install
+      - npx playwright install-deps
+
+  test:
+    desc: Run all tests
+    deps: [install]
+    cmds:
+      - npx playwright test
+    env:
+      FORCE_COLOR: 1
+
+  test:file:
+    desc: Run specific test file
+    deps: [install]
+    vars:
+      FILE: '{{default "simple.spec.ts" .FILE}}'
+    cmds:
+      - npx playwright test tests/{{.FILE}}
+
+  test:simple:
+    desc: Run simple framework tests
+    deps: [install]
+    cmds:
+      - npx playwright test tests/simple.spec.ts
+
+  test:headed:
+    desc: Run tests with visible browser
+    deps: [install]
+    cmds:
+      - npx playwright test --headed
+
+  test:debug:
+    desc: Run tests in debug mode
+    deps: [install]
+    cmds:
+      - npx playwright test --debug
+
+  test:ui:
+    desc: Open tests in Playwright UI mode
+    deps: [install]
+    cmds:
+      - npx playwright test --ui
+
+  report:
+    desc: Open latest test report
+    cmds:
+      - npx playwright show-report
+
+  clean:
+    desc: Clean test results and reports
+    cmds:
+      - rm -rf test-results/
+      - rm -rf playwright-report/
+      - rm -rf screenshots/
+      - echo "Cleanup completed"
+
+  docker:test:
+    desc: Run tests in Docker container
+    cmds:
+      - docker-compose up --build
+      - sleep 10
+      - docker-compose exec -T app npx playwright test
+      - docker-compose down
+
+  status:
+    desc: Check project status
+    cmds:
+      - echo "Project Status:"
+      - echo "Node version:" && node --version
+      - echo "NPM version:" && npm --version
+      - echo "Playwright version:" && npx playwright --version
+
+  quickstart:
+    desc: Set up project and run tests
+    cmds:
+      - task: install
+      - task: playwright:install
+      - task: test:simple
+      - task: report

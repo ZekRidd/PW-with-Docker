@@ -1,6 +1,0 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="0.7658360000103712">
-<testsuite name="graphql-basics.spec.ts" timestamp="2025-09-01T17:02:21.563Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.262" errors="0">
-<testcase name="Pokemon GraphQL API Test › should fetch first 5 pokemons" classname="graphql-basics.spec.ts" time="0.262">
-</testcase>
-</testsuite>
-</testsuites>

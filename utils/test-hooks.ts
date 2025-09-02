@@ -62,9 +62,20 @@ test.afterEach(async ({ page, cleanup, failureHandler }, testInfo) => {
     // Test verilerini temizle
     await cleanup();
 
-    // Test sonrası bekleme
-    await page.waitForTimeout(2000);
+    // Test sonrası bekleme - daha kısa süre
+    await page.waitForTimeout(1000);
 });
+
+// Global afterAll hook - tüm testler tamamlandıktan sonra browser'ı kapat
+// Bu hook'u test suite seviyesinde kullanmak daha güvenli
+export const testSuite = {
+    afterAll: async ({ browser }) => {
+        if (browser) {
+            console.log('Closing browser after test suite completed...');
+            await browser.close();
+        }
+    }
+};
 
 // Test grupları için özel hooks
 export const testGroup = {
